@@ -1,0 +1,32 @@
+<div class="container mt-5 text-center" style="background-color: aliceblue">
+  <h2>{{ process | uppercase }} DEPARTMENT</h2>
+  <form
+    #addForm="ngForm"
+    class="mt-5"
+    (submit)="addForm.valid ? onSubmit(addForm.value) : null"
+  >
+    <div class="row">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Department Name"
+          [ngModel]="object.name"
+          name="name"
+          required
+        />
+      </div>
+      <div class="col-12 d-flex justify-content-evenly mt-4">
+        <button
+          type="button"
+          routerLink="/home/department"
+          class="btn btn-info"
+        >
+          Back
+        </button>
+        <button type="reset" class="btn btn-info">Clear</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>

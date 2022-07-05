@@ -1,0 +1,39 @@
+
+
+.content {
+    position: relative;
+    height: 65vh;
+    background-color: rgb(212, 201, 201);
+    border: 2px solid darkblue;
+    border-radius: 20px;
+}
+
+.content nav {
+    border-radius: 20px;
+    border: 1px solid darkblue  ;
+}
+
+.content .listings {
+    border: 3px dotted darkblue;
+    border-radius: 20px;
+    background-color: rgb(231, 192, 192);
+    margin: 20px 5px;
+    min-height: 35vh;
+}
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: rgb(6, 100, 69);
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: rgb(116, 116, 15) 0.3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a:hover {
+    background-color: rgb(189, 121, 121);
+}

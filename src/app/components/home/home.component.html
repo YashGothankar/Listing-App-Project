@@ -1,0 +1,112 @@
+<div
+  [ngClass]="{
+    'd-none':
+      metaData.isLoading ||
+      !metaData.isAuthenticated ||
+      !metaData.isSocketConnected
+  }"
+>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-info">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo03"
+        aria-controls="navbarTogglerDemo03"
+        aria-expanded="false" 
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/home">Listings</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/home/department"
+              >Department</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/home/employee">Employee</a>
+          </li>
+        </ul>
+
+        <li class="nav-item d-flex">
+          <h3>{{ metaData.user }}</h3>
+        </li>
+        <li class="nav-item d-flex">
+          <a class="nav-link active" (click)="logout()">Logout</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container pt-5">
+    <table class="table caption-top">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Listings</th>
+          <th scope="col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>EMPLOYEE</td>
+          <td>{{ metaData._count["EMPLOYEE"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>DEPARTMENT</td>
+          <td>{{ metaData._count["DEPARTMENT"] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Content with message Box -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-4" id="messages">
+        <h2>Notifications</h2>
+        <div *ngFor="let message of metaData.listMessages">
+          <div class="{{ 'alert alert-' + message.color }}" role="alert">
+            {{ message.message }}
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  [ngClass]="{
+    'd-none': !(
+      metaData.isLoading ||
+      !metaData.isAuthenticated ||
+      !metaData.isSocketConnected
+    )
+  }"
+>
+  <div class="starter">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-success" role="status"></div>
+      <div>
+        <h4>Wait Processing ...</h4>
+      </div>
+      <div class="spinner-border text-danger" role="status"></div>
+    </div>
+  </div>
+</div>
